@@ -25,10 +25,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/base_currency_layout"
-                style="@style/TextInputEditTextAppearance"
+                style="@style/TextInputAppearance"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="@id/input_layout"
                 app:layout_constraintEnd_toStartOf="@id/input_layout"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +44,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/secondary_currency_layout"
-                style="@style/TextInputEditTextAppearance"
+                style="@style/TextInputAppearance"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:padding="10dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/input_layout"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,11 +87,10 @@
                 style="@style/TextInputAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/base_currency_layout"
+                app:layout_constraintStart_toStartOf="@id/input_layout"
                 app:layout_constraintTop_toBottomOf="@id/input_layout">
 
                 <com.google.android.material.textfield.TextInputEditText
