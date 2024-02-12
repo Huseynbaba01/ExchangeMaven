@@ -11,7 +11,6 @@ interface WebServiceApi {
     @GET("/exchange")
     suspend fun exchange(
         @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("q") quantity: Double
+        @Query("to") to: String
     ): Response<Double>
 }

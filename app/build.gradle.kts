@@ -64,12 +64,23 @@ dependencies {
 
     //Dagger-Hilt
     implementation("com.google.dagger:hilt-android:2.49")
+
     kapt("com.google.dagger:hilt-android-compiler:2.49")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
+
+    //Navigation Components
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    //WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("androidx.hilt:hilt-work:1.1.0")
+
 
     //Test implementations
     testImplementation("junit:junit:4.13.2")
