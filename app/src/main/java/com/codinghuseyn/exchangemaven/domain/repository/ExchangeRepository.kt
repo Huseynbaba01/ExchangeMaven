@@ -1,6 +1,7 @@
 package com.codinghuseyn.exchangemaven.domain.repository
 
 interface ExchangeRepository {
-    fun getCurrencies()
+    suspend fun getListsQuotes(): List<String>
 
+    suspend fun exchange(from: String, to: String, quantity: Double): Double
 }

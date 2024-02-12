@@ -34,9 +34,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/base_currency"
                     style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:inputType="textCapCharacters"
                     android:gravity="center"
                     android:hint="@string/hint_select_currency" />
 
@@ -54,9 +57,12 @@
                 app:layout_constraintTop_toTopOf="@id/output_layout">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/secondary_currency"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:singleLine="true"
+                    android:inputType="textCapCharacters"
                     android:hint="@string/hint_select_currency" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,8 +83,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/input"
                     android:inputType="numberDecimal"
-                    android:singleLine="true"
-                    android:text="@string/zero_decimal" />
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,6 +113,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_convert"
         style="@style/MainButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

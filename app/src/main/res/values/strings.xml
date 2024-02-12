@@ -2,6 +2,8 @@
     <string name="app_name">ExchangeMaven</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fill_error">Please fill</string>
+    <string name="wrong_symbol">Wrong symbol</string>
     <string name="warning">Warning</string>
     <string name="input">Input</string>
     <string name="output">Output</string>

@@ -2,6 +2,9 @@ package com.codinghuseyn.exchangemaven.data.di
 
 import com.codinghuseyn.exchangemaven.BuildConfig
 import com.codinghuseyn.exchangemaven.data.remote.api.WebServiceApi
+import com.codinghuseyn.exchangemaven.data.repository.ExchangeRepositoryImpl
+import com.codinghuseyn.exchangemaven.domain.repository.ExchangeRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -33,6 +37,8 @@ object DataModule {
             it.proceed(request)
         }
         return OkHttpClient.Builder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(headerInterceptor)
             .build()

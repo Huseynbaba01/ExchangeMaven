@@ -13,5 +13,5 @@ interface WebServiceApi {
         @Query("from") from: String,
         @Query("to") to: String,
         @Query("q") quantity: Double
-    ): Response<Int>
+    ): Response<Double>
 }
