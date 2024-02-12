@@ -57,6 +57,7 @@
                     android:layout_height="wrap_content"
                     style="@style/TextInputEditTextAppearance"
                     android:hint="@string/input"
+                    android:singleLine="true"
                     android:inputType="numberDecimal"
                     android:text="1.00" />
 
@@ -78,6 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/output"
+                    android:enabled="false"
                     style="@style/TextInputEditTextAppearance"
                     android:inputType="none"
                     android:text="0.00"/>
