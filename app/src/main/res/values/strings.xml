@@ -5,10 +5,15 @@
     <string name="fill_error">Please fill</string>
     <string name="wrong_symbol">Wrong symbol</string>
     <string name="warning">Warning</string>
+    <string name="warn">Warn</string>
     <string name="input">Input</string>
     <string name="output">Output</string>
     <string name="convert">Convert</string>
+    <string name="converting">Converting</string>
     <string name="zero_decimal">0.00</string>
     <string name="hint_select_currency">Select</string>
     <string name="one">1</string>
+    <string name="minimum">Minimum</string>
+    <string name="maximum">Maximum</string>
+    <string name="quantity">Quantity</string>
 </resources>

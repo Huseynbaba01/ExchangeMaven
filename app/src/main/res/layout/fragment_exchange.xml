@@ -39,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
+                    android:fontFamily="@font/poppins_medium"
                     android:inputType="textCapCharacters"
                     android:gravity="center"
                     android:hint="@string/hint_select_currency" />
@@ -61,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_medium"
                     android:singleLine="true"
                     android:inputType="textCapCharacters"
                     android:hint="@string/hint_select_currency" />

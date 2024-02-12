@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.codinghuseyn.exchangemaven.R
 import com.codinghuseyn.exchangemaven.databinding.FragmentExchangeBinding
 import com.codinghuseyn.exchangemaven.presentation.viewmodel.ExchangeViewModel
@@ -47,22 +48,21 @@ class ExchangeFragment : Fragment() {
         binding.secondaryCurrency.doOnTextChanged { _, _, _, _ ->
             binding.secondaryCurrencyLayout.error = null
         }
-        binding.inputLayout.editText!!.doOnTextChanged { _, _, _, _ ->
-            binding.inputLayout.error = null
-        }
+
         binding.btnConvert.setOnClickListener {
 
             if(hasError()) return@setOnClickListener
 
-
             val from = binding.baseCurrency.text.toString()
             val to = binding.secondaryCurrency.text.toString()
-            val quantity = binding.inputLayout.editText?.text.toString().toDouble()
-            viewModel.exchange(from, to, quantity).observe(viewLifecycleOwner) {
+            viewModel.exchange(from, to).observe(viewLifecycleOwner) {
                 binding.outputLayout.editText!!.setText(it.toString())
             }
         }
 
+        binding.btnWarning.setOnClickListener {
+            findNavController().navigate(R.id.action_exchangeFragment_to_warnFragment)
+        }
 
         return binding.root
     }
@@ -89,10 +89,6 @@ class ExchangeFragment : Fragment() {
             binding.secondaryCurrencyLayout.error = getString(R.string.wrong_symbol)
         }
 
-        if (binding.inputLayout.editText?.text.isNullOrEmpty()) {
-            hasError = true
-            binding.inputLayout.error = getString(R.string.fill_error)
-        }
         return hasError
     }
 

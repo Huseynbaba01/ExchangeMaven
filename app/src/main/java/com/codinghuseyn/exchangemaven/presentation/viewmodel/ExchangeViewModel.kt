@@ -28,9 +28,9 @@ class ExchangeViewModel @Inject constructor(private val exchangeRepository: Exch
         }
     }
 
-    fun exchange(from: String, to: String, quantity: Double) = liveData{
+    fun exchange(from: String, to: String) = liveData{
         try {
-            emit(exchangeRepository.exchange(from, to, quantity))
+            emit(exchangeRepository.exchange(from, to))
             //No need to add all pairs to the database, it will be nonsense
         }catch (e: Exception){
             problemLiveData.postValue(e.message)
