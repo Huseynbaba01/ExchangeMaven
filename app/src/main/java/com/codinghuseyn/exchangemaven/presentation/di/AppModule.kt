@@ -1,4 +1,4 @@
-package com.codinghuseyn.exchangemaven.di
+package com.codinghuseyn.exchangemaven.presentation.di
 
 import android.util.Log
 import dagger.Module
@@ -16,4 +16,5 @@ object AppModule {
         Log.d("MyTagHere", "Lazy initialization of an expensive object")
         return "MyExample"
     }
+
 }

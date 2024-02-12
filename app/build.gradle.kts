@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,6 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","baseUrl", "${getProperty("baseUrl")}")
+        buildConfigField("String","xRapidApiKey", "${getProperty("xRapidApiKey")}")
     }
 
     buildTypes {
@@ -39,19 +43,33 @@ android {
         viewBinding {
             enable = true
         }
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    //Core components
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    //Lifecycle Components
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     //Dagger-Hilt
     implementation("com.google.dagger:hilt-android:2.49")
     kapt("com.google.dagger:hilt-android-compiler:2.49")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
     //Test implementations
     testImplementation("junit:junit:4.13.2")
@@ -62,4 +80,18 @@ dependencies {
 // Allow references to generated code
 kapt {
     correctErrorTypes = true
+}
+
+fun getProperty(propertyName: String): String? {
+    val dataPropertiesFile = file("data.properties")
+    val properties = Properties()
+
+    // Load data.properties if it exists
+    if (dataPropertiesFile.exists()) {
+        dataPropertiesFile.inputStream().use { properties.load(it) }
+        return properties.getProperty(propertyName)
+    }
+
+    // Return null if the property is not found
+    return null
 }
