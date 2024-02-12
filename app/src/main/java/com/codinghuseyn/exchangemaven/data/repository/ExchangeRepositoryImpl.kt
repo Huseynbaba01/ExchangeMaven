@@ -12,8 +12,8 @@ class ExchangeRepositoryImpl @Inject constructor(private val api: WebServiceApi)
         throw IOException("Error fetching quotes: ${response.code()}")
     }
 
-    override suspend fun exchange(from: String, to: String, quantity: Double): Double {
-        val response = api.exchange(from, to, quantity)
+    override suspend fun exchange(from: String, to: String): Double {
+        val response = api.exchange(from, to)
         if(response.isSuccessful) return response.body()!!
         throw IOException("Error fetching quotes: ${response.code()}")
     }

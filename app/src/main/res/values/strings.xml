@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fill_error">Please fill</string>
     <string name="wrong_symbol">Wrong symbol</string>
+    <string name="channel_name">Exchange Channel</string>
+    <string name="channel_description">Exchange Channel Description</string>
     <string name="warning">Warning</string>
     <string name="warn">Warn</string>
     <string name="input">Input</string>

@@ -1,11 +1,17 @@
 package com.codinghuseyn.exchangemaven.presentation.fragment
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.work.Constraints
@@ -27,6 +33,7 @@ class WarnFragment : Fragment() {
     private val binding
         get() = _fragmentWarnBinding!!
 
+    @SuppressLint("NewApi")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,19 +41,43 @@ class WarnFragment : Fragment() {
     ): View {
         _fragmentWarnBinding = FragmentWarnBinding.inflate(inflater, container, false)
 
-        updateAutoCompleteData(binding.baseCurrency, viewModel.quotesLiveData.value!!)
-        updateAutoCompleteData(binding.secondaryCurrency, viewModel.quotesLiveData.value!!)
+        binding.baseCurrency.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) binding.baseCurrency.showDropDown()
+        }
+        binding.secondaryCurrency.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.secondaryCurrency.showDropDown()
+            }
+        }
+
+        updateAutoCompleteData(binding.baseCurrency, viewModel.quotesLiveData.value?: emptyList())
+        updateAutoCompleteData(binding.secondaryCurrency, viewModel.quotesLiveData.value?: emptyList())
 
         binding.btnConverting.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
         binding.btnWarn.setOnClickListener {
+
+            checkNotificationPermissions()
+
             if(hasError()) return@setOnClickListener
             setUpWarning()
         }
 
         return binding.root
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun checkNotificationPermissions() {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1);
+
+        }
     }
 
     @Suppress("UNCHECKED_CAST")

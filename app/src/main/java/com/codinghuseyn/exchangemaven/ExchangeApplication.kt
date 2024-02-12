@@ -3,15 +3,18 @@ package com.codinghuseyn.exchangemaven
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
+import androidx.work.WorkManager
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 @HiltAndroidApp
-class ExchangeApplication: Application(), Configuration.Provider{
-    @Inject lateinit var workerFactory: HiltWorkerFactory
+class ExchangeApplication: Application(){
 
-    override val workManagerConfiguration: Configuration
-        get() = Configuration.Builder()
-            .setWorkerFactory(workerFactory)
-            .build()
+    @Inject lateinit var hiltWorkerFactory: HiltWorkerFactory
+
+    override fun onCreate() {
+        super.onCreate()
+        WorkManager.initialize(this, Configuration.Builder().setWorkerFactory(hiltWorkerFactory).build())
+    }
+
 }

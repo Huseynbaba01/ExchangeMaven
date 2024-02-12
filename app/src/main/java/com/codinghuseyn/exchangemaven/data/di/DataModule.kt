@@ -2,9 +2,6 @@ package com.codinghuseyn.exchangemaven.data.di
 
 import com.codinghuseyn.exchangemaven.BuildConfig
 import com.codinghuseyn.exchangemaven.data.remote.api.WebServiceApi
-import com.codinghuseyn.exchangemaven.data.repository.ExchangeRepositoryImpl
-import com.codinghuseyn.exchangemaven.domain.repository.ExchangeRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
